@@ -1,15 +1,30 @@
 from conf import *
 import os
+import datetime
+import shutil
 
-if not CONF_USER:
-    user = os.getlogin()
-else:
-    user = CONF_USER
-desktop_directory = '/home/'+user+'/Desktop/'
+def create_note_md(desktop_directory):
+    with open(desktop_directory+ 'note.md', 'w+') as f:
+        f.writelines(DEFAULT_TEXT)
 
-if not os.access(desktop_directory, os.F_OK):
-    print('File path does not exists.')
+def format_time_to_md(time):
+    return str(time.day)+"-"+str(time.month)+"-"+str(time.year)+".md"
 
-with open(desktop_directory + 'note.md', 'w+') as f:
-    f.writelines('# rename this note to invalidate it from script')
+now = datetime.date.today()
+def move_file(src, target):
 
+    with open(src+'note.md', 'r') as f:
+        line = f.readline()
+        if line != DEFAULT_TEXT:
+            file_name = format_time_to_md(now) 
+            shutil.move(src + 'note.md', target + file_name)
+            print("moved: "+src + "note.md " + "to: " + target + file_name)
+        else:
+            return 1
+        
+if __name__ == "__main__":
+    #create_note_md(DESKTOP_DIR)
+    move_file(DESKTOP_DIR, TARGET_DIR)
+
+
+# add more code here smiley-face :)
