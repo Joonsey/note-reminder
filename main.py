@@ -8,7 +8,13 @@ def create_note_md(desktop_directory):
         f.writelines(DEFAULT_TEXT)
 
 def format_time_to_md(time):
-    return str(time.day)+"-"+str(time.month)+"-"+str(time.year)+".md"
+    day = str(time.day)
+    month = str(time.month)
+    if time.month <= 9:
+        month = "0"+month
+    if time.day <= 9:
+        day = "0"+day
+    return day + "-" + month + "-"+str(time.year)+".md"
 
 now = datetime.date.today()
 def move_file(src, target):
@@ -24,7 +30,7 @@ def move_file(src, target):
         
 if __name__ == "__main__":
     #create_note_md(DESKTOP_DIR)
-    move_file(DESKTOP_DIR, TARGET_DIR)
-
+    #move_file(DESKTOP_DIR, TARGET_DIR)
+    pass
 
 # add more code here smiley-face :)
