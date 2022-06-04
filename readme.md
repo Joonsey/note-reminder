@@ -29,18 +29,18 @@ This is my first program in C so it is very possible there are better ways to do
 ptr = fopen(srcFilePath, "r");
 char line[MAX_LINE_LENGTH] = {0};
 if (access(destFilePath, F_OK) == 0){
-return 1;
+		return 1;
 }
 else {
-destPtr = fopen(destFilePath, "w+");
+		destPtr = fopen(destFilePath, "w+");
 }
 if (!destPtr) {
-printf("file not found and some error occured");
-fclose(destPtr);
-return 1;
+		printf("file not found and some error occured");
+		fclose(destPtr);
+		return 1;
 }
-while (fgets(line, MAX_LINE_LENGTH, ptr)) {
-fprintf(destPtr, line);
+		while (fgets(line, MAX_LINE_LENGTH, ptr)) {
+		fprintf(destPtr, line);
 }
 
 ```
