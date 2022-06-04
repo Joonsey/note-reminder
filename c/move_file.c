@@ -74,6 +74,7 @@ int main(){
 				}
 				else {
 						destPtr = fopen(destFilePath, "w+");
+						printf("writing content to file: %s", destFilePath);
 				}
 				if (!destPtr) {
 						printf("file not found and some error occured");

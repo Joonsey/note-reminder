@@ -5,4 +5,5 @@ venv/
 
 move_file
 write_file
-
+move_note
+write_note
