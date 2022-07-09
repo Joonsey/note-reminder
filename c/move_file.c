@@ -74,10 +74,10 @@ int main(){
 				}
 				else {
 						destPtr = fopen(destFilePath, "w+");
-						printf("writing content to file: %s", destFilePath);
+						printf("writing content to file: %s\n", destFilePath);
 				}
 				if (!destPtr) {
-						printf("file not found and some error occured");
+						printf("file not found and some error occured\n");
 				}
 				while (fgets(line, MAX_LINE_LENGTH, ptr)) {
 					// printf(line);
