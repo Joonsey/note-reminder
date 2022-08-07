@@ -3,7 +3,7 @@ import os
 # Change this for custom directory paths.
 AUTO_CONFIG = True 
 DEFAULT_TEXT = "# change this line"
-
+DEFAULT_DEST = "raspberrypi:/home/pi/notes"
 if AUTO_CONFIG:
     DESKTOP_DIR = '/home/'+os.getlogin()+'/Desktop/'
     TARGET_DIR = '/home/'+os.getlogin()+'/Documents/.notes/'
