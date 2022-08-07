@@ -2,6 +2,7 @@ from conf import *
 import os
 import datetime
 import shutil
+import subprocess
 
 def create_note_md(desktop_directory):
     with open(desktop_directory+ 'note.md', 'w+') as f:
@@ -16,6 +17,12 @@ def format_time_to_md(time):
         day = "0"+day
     return day + "-" + month + "-"+str(time.year)+".md"
 
+def backup_file_with_scp(filename: string, destination: string):
+    try:
+        subprocess.call(["scp", filename, destination])
+    except:
+        print("failed to backup file!")
+
 now = datetime.date.today()
 def move_file(src, target):
 
@@ -25,6 +32,7 @@ def move_file(src, target):
             file_name = format_time_to_md(now) 
             shutil.move(src + 'note.md', target + file_name)
             print("moved: "+src + "note.md " + "to: " + target + file_name)
+            backup_file_with_scp(file_name, DEFAULT_DEST)
         else:
             return 1
         
