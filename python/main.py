@@ -19,6 +19,7 @@ def format_time_to_md(time):
 
 def backup_file_with_scp(filename: str, destination: str):
     try:
+        print("backing up file to backup server...")
         subprocess.call(["scp", filename, destination])
     except:
         print("failed to backup file!")
